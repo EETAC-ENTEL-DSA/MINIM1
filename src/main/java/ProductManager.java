@@ -6,18 +6,18 @@ import java.util.List;
 
 public interface ProductManager {
 
-    public void addProduct(String id, String name, double price);
+    void addUser(String nif, String name, String surname, String mail);
+    void addProduct(String id, String name, double price);
+    void addOrder(Order order);
 
-    public List<Product> getProductsByPrice();
+    List<Product> getProductsByPrice();
+    List<Product> getProductsBySales();
+    Order deliverOrder();
 
-    public void addOrder(Order order);
-
-    public int numOrders();
-
-
-    public Order deliverOrder();
-
-    Product getProduct(String c1);
-
+    Product getProduct(String id);
     User getUser(String number);
+
+    int numOrders();
+    int numUsers();
+    int numProducts();
 }

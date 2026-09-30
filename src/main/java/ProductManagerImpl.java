@@ -18,11 +18,15 @@ public class ProductManagerImpl implements ProductManager {
     @Override
     public void addProduct(String id, String name, double price) {
         productList.add(new Product(id, name, price));
-
     }
 
     @Override
     public List<Product> getProductsByPrice() {
+        return productList;
+    }
+
+    @Override
+    public List<Product> getProductsBySales() {
         return productList;
     }
 
@@ -38,19 +42,46 @@ public class ProductManagerImpl implements ProductManager {
     }
 
     @Override
+    public int numUsers() {
+        return 0;
+    }
+
+    @Override
     public Order deliverOrder() {
         Order order = orderQueue.poll();
         // TO-DO
         return order;
     }
 
-    @Override
-    public Product getProduct(String c1) {
+
+    public Product getProduct(String id) {
+        /*
+        for (Product product : productsList) {
+            if (product.getName().equals(name)) {
+                return product;
+            }
+        }
         return null;
+        */
+
+        return productList.stream()
+                .filter(product -> product.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public User getUser(String number) {
         return null;
+    }
+
+    @Override
+    public int numProducts() {
+        return productList.size();
+    }
+
+    @Override
+    public void addUser(String nif, String name, String surname, String mail) {
+        //
     }
 }
